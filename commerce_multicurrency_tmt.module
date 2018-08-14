@@ -1,0 +1,38 @@
+<?php
+// $Id$
+
+/**
+ * @file
+ * Integrates the Trust My Travel Currency API with commerce_multicurrency
+ */
+
+/**
+ * Implements hook_commerce_multicurrency_exchange_rate_sync_provider_info
+ */
+function commerce_multicurrency_tmt_commerce_multicurrency_exchange_rate_sync_provider_info() {
+  return array(
+    'nbrb' => array(
+      'title' => t('Trust My Travel API'),
+      'callback' => 'commerce_multicurrency_tmt_exchange_rate_sync_provider_tmt',
+      'file' => drupal_get_path('module', 'commerce_multicurrency_tmt') . '/commerce_multicurrency_tmt.inc',
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu
+ */
+function commerce_multicurrency_tmt_menu() {
+  $items = array();
+  $items['admin/commerce/config/currency/tmt'] = array(
+    'title' => 'Trust My Travel',
+    'description' => 'Configuration for the Trust My Travel currency API.',
+    'page provider' => 'drupal_get_form',
+    'page arguments' => array('commerce_multicurrency_tmt_settings_form'),
+    'access arguments' => array('configure store'),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'commerce_multicurrency_tmt.admin.inc',
+    'weight' => 1,
+  );
+  return $items;
+}

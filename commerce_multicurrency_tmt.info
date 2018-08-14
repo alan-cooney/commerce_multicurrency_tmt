@@ -1,0 +1,6 @@
+name = Commerce Multicurrency Trust My Travel
+description = Integration of the TMT currency API
+core = 7.x
+package = commerce
+files[] = commerce_multicurrency_tmt.module
+dependencies[] = commerce_multicurrency

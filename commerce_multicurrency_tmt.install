@@ -1,0 +1,4 @@
+<?php
+
+// Clear the cache in case it was installed previously
+cache_clear_all('commerce_multicurrency_tmt_exchange_rate_sync_provider_tmt', 'cache');
